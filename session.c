@@ -121,8 +121,24 @@ session_create(const char *name, const char *cmd, const char *cwd,
 	s->idx = next_session++;
 	if (name != NULL)
 		s->name = xstrdup(name);
-	else
-		xasprintf(&s->name, "%u", s->idx);
+	else {
+        char buf[32];
+        struct session *s2;
+        int amb = 0;
+        int done = 0;
+
+        for (int i = 0; i < 100; ++i) {
+            sprintf(buf, "%u", i);
+            s2 = cmd_lookup_session(buf, &amb);
+            if (s2 == NULL) {
+                xasprintf(&s->name, "%u", i);
+                done = 1;
+                break;
+            }
+        }
+        if (!done)
+            xasprintf(&s->name, "%u", s->idx);
+    }
 	RB_INSERT(sessions, &sessions, s);
 
 	if (cmd != NULL) {
