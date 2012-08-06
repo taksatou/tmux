@@ -14,3 +14,7 @@
 *.out
 
 *.log
+
+Makefile
+config.status
+autom4te.cache/
