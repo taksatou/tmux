@@ -18,4 +18,4 @@
 Makefile
 config.status
 autom4te.cache/
-.deps
+.deps/
