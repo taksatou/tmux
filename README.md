@@ -10,3 +10,8 @@ Following differences are made.
 - added reverse-buffer option
 - modified create session behavior
 
+
+## for mac user
+
+$ ./configure DFLAGS=-lresolv
+
