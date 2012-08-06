@@ -1315,7 +1315,7 @@ window_copy_copy_selection(struct window_pane *wp)
 	} else {
 		if (keys == MODEKEY_EMACS)
 			lastex = ex;
-		else	
+		else
 			lastex = ex + 1;
 		restex = xx;
 		firstsx = sx;
@@ -1349,7 +1349,7 @@ window_copy_copy_selection(struct window_pane *wp)
 	/* Add the buffer to the stack. */
 	limit = options_get_number(&global_options, "buffer-limit");
 	if (options_get_number(&global_options, "reverse-buffer")) {
-		paste_add(&global_buffers, buf, off, limit);
+		paste_add_tail(&global_buffers, buf, off, limit);
 	} else {
 		paste_add(&global_buffers, buf, off, limit);
 	}
