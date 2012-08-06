@@ -139,14 +139,14 @@ paste_add_tail(struct paste_stack *ps, char *data, size_t size, u_int limit)
 	}
 
 	pb = xmalloc(sizeof *pb);
-	
+
 	if (ARRAY_LENGTH(ps) > 0) {
 		ARRAY_ADD(ps, ARRAY_FIRST(ps));
 		ARRAY_SET(ps, 0, pb);
 	} else {
 		ARRAY_ADD(ps, pb);
 	}
-	ARRAY_INSERT(ps, 0, pb);
+    //	ARRAY_INSERT(ps, 0, pb);
 
 	pb->data = data;
 	pb->size = size;
